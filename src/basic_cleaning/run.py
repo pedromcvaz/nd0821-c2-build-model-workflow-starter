@@ -29,6 +29,9 @@ def go(args):
     logger.info(
         "Basic cleaning: converting the column last_review to the datetime format")
 
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     # Write the data to disk
     df.to_csv("clean_sample.csv", index=False)
 
